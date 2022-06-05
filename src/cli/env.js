@@ -1,3 +1,11 @@
+import process from 'process';
+import { stdout } from 'process';
 export const parseEnv = () => {
-    // Write your code here 
+    let objKeys = Object.entries(process.env)
+    objKeys.forEach((item) => {
+      if (item[0].includes('RSS_')) {
+        stdout.write(`${item[0]}=${item[1]}\n`);
+      }
+    })
 };
+parseEnv()
